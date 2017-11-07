@@ -8,7 +8,8 @@
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
-      <nuxt-link to="/about">about</nuxt-link>
+      <nuxt-link to="/about">about</nuxt-link><br /><br />
+      <nuxt-link to="/todos">todos</nuxt-link>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>

@@ -1,8 +1,5 @@
 export const state = () => ({
-  list: [{
-    text: 'i am server data',
-    done: true
-  }]
+  list: []
 })
 
 export const mutations = {

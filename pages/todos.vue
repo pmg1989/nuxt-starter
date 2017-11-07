@@ -1,22 +1,25 @@
 <template>
-  <div>
-    <div>
-      {{ todos.length }}
-    </div>
-    <ul>
-      <li v-for="todo in todos">
-        <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
-        <span :class="{ done: todo.done }">{{ todo.text }}</span>
-      </li>
-      <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
-    </ul>
-  </div>
+  <ul>
+    <li v-for="todo in todos">
+      <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
+      <span :class="{ done: todo.done }">{{ todo.text }} - {{ isServer }}</span>
+    </li>
+    <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
+  </ul>
 </template>
 
 <script>
+import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
+  async asyncData ({ store, isServer }) {
+    const res = await axios.get('https://api.myjson.com/bins/wuymn')
+    res.data.todos.map(todo => {
+      store.commit('todos/add', todo.text)
+    })
+    return { isServer }
+  },
   computed: {
     ...mapState('todos', {
       todos: state => state.list
