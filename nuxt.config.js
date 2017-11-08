@@ -3,6 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    titleTemplate: '%s - Nuxt.js',
     title: 'nuxt-starter',
     meta: [
       { charset: 'utf-8' },
