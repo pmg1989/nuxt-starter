@@ -2,7 +2,7 @@
   <ul>
     <li v-for="todo in todos">
       <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
-      <span :class="{ done: todo.done }">{{ todo.text }} - {{ isServer }}</span>
+      <span :class="{ done: todo.done }">{{ todo.text }}</span>
     </li>
     <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
   </ul>
@@ -13,12 +13,11 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  async asyncData ({ store, isServer }) {
-    const res = await axios.get('https://api.myjson.com/bins/wuymn')
+  async asyncData ({ store }) {
+    const res = await axios.get('https://api.myjson.com/bins/1fq7k7')
     res.data.todos.map(todo => {
       store.commit('todos/add', todo.text)
     })
-    return { isServer }
   },
   computed: {
     ...mapState('todos', {
