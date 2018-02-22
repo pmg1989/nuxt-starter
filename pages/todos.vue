@@ -1,8 +1,9 @@
 <template>
   <ul>
-    <li v-for="todo in todos" :key="todo">
+    <li v-for="todo in todos" :key="todo.id">
       <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
       <span :class="{ done: todo.done }">{{ todo.text }}</span>
+      <span class="remove" @click="remove(todo)"> X</span>
     </li>
     <li><input placeholder="新增TODO" @keyup.enter="addTodo"></li>
   </ul>
@@ -31,7 +32,8 @@ export default {
     },
     ...mapMutations('todos', [
       'toggle',
-      'add'
+      'add',
+      'remove'
     ])
   }
 }
@@ -40,5 +42,10 @@ export default {
 <style>
 .done {
   text-decoration: line-through;
+}
+
+.remove {
+  cursor: pointer;
+  color: red;
 }
 </style>

@@ -4,8 +4,10 @@ export const state = () => ({
 
 export const mutations = {
   add (state, text) {
+    const id = state.list.reduce((maxId, todo) => Math.max(todo.id, maxId), 0)
     state.list.push({
-      text: text,
+      id: id + 1,
+      text,
       done: false
     })
   },
