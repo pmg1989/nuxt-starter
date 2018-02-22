@@ -4,7 +4,7 @@
       <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
       <span :class="{ done: todo.done }">{{ todo.text }}</span>
     </li>
-    <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
+    <li><input placeholder="新增TODO" @keyup.enter="addTodo"></li>
   </ul>
 </template>
 
